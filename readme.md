@@ -1,5 +1,7 @@
 # GitHub/GitLab (K4.0057_2.0_VZ)
-Prüfungsabgabe 
+## Prüfungsabgabe  
+* Codeblöcke bzw. Konsoleneingaben innerhalb dieses Readme verwenden C-Syntax für Kommentare
+* Screenshots liegen im Zip-File in den Verzeichnissen a, b und c passend zu den Übungsaufgaben
 
 ## a) GitHub Repository Setup
 * Benutzerkonto auf GitHub ist vorhanden: *CerolBrisignr*
@@ -56,3 +58,32 @@ Prüfungsabgabe
     weiteren Feature-Branch provoziert.
     */
 ```
+
+## Bonus
+```
+git switch -c feature2 // could have deleted feature 1 and gone again
+notepad++ main.py // Modified main.py, more in the conflict
+git add main.py
+git commit -m "made an actual python file out of main.py"
+git switch main
+notepad++ main.py // Modified main.py
+git add main.py
+git commit -m "changed the existing line in main.py"
+git merge feature2 // Keeping changes from feature branch
+git add main.py
+git commit
+git push
+```
+Der auftretende Konflikt wird durch konkurrierende Änderungen auf den beiden merged Branches verursacht. Auf beiden Branches geschehen Änderungen an der selben Zeile in main.py.  
+Ein Branch (main) ändert lediglich die vorhandene Zeile. Der andere Branch (feature2) ändert die komplette Datei, damit auch die existierende Zeile. Der Konflikt sieht dabei wie folgt aus:
+```
+<<<<<<< HEAD
+# changing this line
+=======
+def sayHello():
+    print("Hallo Welt und VelpTEC!")
+    
+sayHello()
+>>>>>>> feature2
+```
+In diesem Fall behalten wir einfach den Inhalt von feature2.
