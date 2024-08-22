@@ -1,1 +1,4 @@
-# adding a line
+def sayHello():
+    print("Hallo Welt und VelpTEC!")
+    
+sayHello()
